@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/tsconfig.json" afterDir="false" />
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict) and add base path to relative(prevent build file taking assets from absolute paths)&#10;- add dist-react to gitignore&#10;- add main.js&#10;- exclude src/electron from vite via tsconfig.json&#10;- add tsconfig.json in electron directory(to electron-specific compile-build, outDir commands)&#10;- add transpile:electron to package.json (to compile all typescript files inside electron directroy)">
+      <change afterPath="$PROJECT_DIR$/perf-hawk/desktopIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/electron-builder.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/dist-electron/main.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +26,9 @@
     <persistenceIdMap>
       <entry key="_C:/Users/Binal Lokitha/Desktop/Documents/GitHub/perf-hawk" value="3BiFKLU4AoLSDlV4K2GdENThK2e" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedChatMode">
+    <option name="chatModeId" value="Ask" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -61,17 +68,22 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Binal Lokitha/Desktop/Documents/GitHub/perf-hawk/perf-hawk",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\Binal Lokitha\\Desktop\\Documents\\GitHub\\perf-hawk\\perf-hawk\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Binal Lokitha\Desktop\Documents\GitHub\perf-hawk\perf-hawk" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Binal Lokitha\Desktop\Documents\GitHub\perf-hawk\perf-hawk" />
       <recent name="C:\Users\Binal Lokitha\Desktop\Documents\GitHub\perf-hawk\perf-hawk\src\ui" />
       <recent name="C:\Users\Binal Lokitha\Desktop\Documents\GitHub\perf-hawk\perf-hawk\ui" />
     </key>
@@ -90,7 +102,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1774963920372</updated>
-      <workItem from="1774963921688" duration="12500000" />
+      <workItem from="1774963921688" duration="27279000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -100,11 +112,25 @@
       <option name="project" value="LOCAL" />
       <updated>1774967594122</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict) and add base path to relative(prevent build file taking assets from absolute paths)&#10;- add dist-react to gitignore&#10;- add main.js&#10;- exclude src/electron from vite via tsconfig.json&#10;- add tsconfig.json in electron directory(to electron-specific compile-build, outDir commands)&#10;- add transpile:electron to package.json (to compile all typescript files inside electron directroy)">
+      <option name="closed" value="true" />
+      <created>1775051191036</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775051191036</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/perf-hawk/src/ui/main.js" />
+        <option value="$PROJECT_DIR$/perf-hawk/src/ui/App.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -119,7 +145,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore" />
+    <MESSAGE value="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict) and add base path to relative(prevent build file taking assets from absolute paths)&#10;- add dist-react to gitignore&#10;- add main.js&#10;- exclude src/electron from vite via tsconfig.json&#10;- add tsconfig.json in electron directory(to electron-specific compile-build, outDir commands)&#10;- add transpile:electron to package.json (to compile all typescript files inside electron directroy)" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict) and add base path to relative(prevent build file taking assets from absolute paths)&#10;- add dist-react to gitignore&#10;- add main.js&#10;- exclude src/electron from vite via tsconfig.json&#10;- add tsconfig.json in electron directory(to electron-specific compile-build, outDir commands)&#10;- add transpile:electron to package.json (to compile all typescript files inside electron directroy)" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
