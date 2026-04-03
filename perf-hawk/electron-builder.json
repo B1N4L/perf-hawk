@@ -1,7 +1,7 @@
 {
   "appId": "com.binal-lokitha.pref-hawk",
   "files": ["dist-electron", "dist-react"],
-
+  "extraResources": ["dist-electron/preload.cjs"],
   "icon": "./desktopIcon.png",
   "mac": {
     "target": "dmg"
