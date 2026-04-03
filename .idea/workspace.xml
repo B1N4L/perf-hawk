@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="&#10;feat(build): configure build with dev and production &#10;&#10;- add preload.cts&#10;- configure separate root paths for preload.cjs with pathResolver.ts">
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.ts" afterDir="false" />
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): implement resource polling and static data retrieval&#10;&#10;- add resourceManager.ts&#10;- add os-utils, os-utils@types npm packages&#10;- fix main.ts with getPreloadPath">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1774963920372</updated>
-      <workItem from="1774963921688" duration="47664000" />
+      <workItem from="1774963921688" duration="50436000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -135,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775198508544</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat(resource): implement resource polling and static data retrieval&#10;&#10;- add resourceManager.ts&#10;- add os-utils, os-utils@types npm packages&#10;- fix main.ts with getPreloadPath">
+      <option name="closed" value="true" />
+      <created>1775198763708</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1775198763708</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +175,8 @@
     <MESSAGE value="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict) and add base path to relative(prevent build file taking assets from absolute paths)&#10;- add dist-react to gitignore&#10;- add main.js&#10;- exclude src/electron from vite via tsconfig.json&#10;- add tsconfig.json in electron directory(to electron-specific compile-build, outDir commands)&#10;- add transpile:electron to package.json (to compile all typescript files inside electron directroy)" />
     <MESSAGE value="feature(dev): hot build and reload for electron&#10;&#10;- add cross-env, electron-builder, npm-run-all npm packages&#10;- add transpile and dist cmds for both macOS and windows&#10;- change main entry point again to dist-electron&#10;-update run dev command&#10;-add util.ts to detect environment&#10;- configure strict port: 5123 in vite.config.ts and main.ts for dev and other env.s&#10;- add electron-builder.json to configure build info(windows build won't run without an icon)&#10;- add dist-electron directory to gitignore" />
     <MESSAGE value="&#10;feat(build): configure build with dev and production &#10;&#10;- add preload.cts&#10;- configure separate root paths for preload.cjs with pathResolver.ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;feat(build): configure build with dev and production &#10;&#10;- add preload.cts&#10;- configure separate root paths for preload.cjs with pathResolver.ts" />
+    <MESSAGE value="feat(resource): implement resource polling and static data retrieval&#10;&#10;- add resourceManager.ts&#10;- add os-utils, os-utils@types npm packages&#10;- fix main.ts with getPreloadPath" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): implement resource polling and static data retrieval&#10;&#10;- add resourceManager.ts&#10;- add os-utils, os-utils@types npm packages&#10;- fix main.ts with getPreloadPath" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

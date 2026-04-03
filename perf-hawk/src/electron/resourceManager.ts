@@ -1,16 +1,23 @@
 import osUtils from "os-utils"
 import fs from "fs"
-import * as os from "node:os";     //requires node 18 or later
+import * as os from "node:os";
+import {BrowserWindow} from "electron";     //requires node 18 or later
 
 const POLLING_INTERVAL = 500 //ms
 
 //in an interval, poll the resources and send them to the main process
-export function pollResources(){
+export function pollResources(mainWindow: BrowserWindow){
     setInterval( async () => {
         const cpuUsage = await getCpuUsage();
         const ramUsage = getRamUsage();
         const storageData = getStorageData();
-        console.log({cpuUsage, ramUsage, storageUsage: storageData.usage});
+        // console.log({cpuUsage, ramUsage, storageUsage: storageData.usage});
+        // everything that Electron needs to interact with the actual window is inside the webContents
+        mainWindow.webContents.send("statistics", {
+            cpuUsage,
+            ramUsage,
+            storageUsage: storageData.usage
+        });
 
     }, POLLING_INTERVAL);
 }
