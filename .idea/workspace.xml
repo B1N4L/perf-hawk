@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): implement resource polling and static data retrieval&#10;&#10;- add resourceManager.ts&#10;- add os-utils, os-utils@types npm packages&#10;- fix main.ts with getPreloadPath">
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="&#10;&#10;- add types.d.ts (define global types)">
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/types.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/tsconfig.app.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,46 +46,48 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "B1N4L"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;B1N4L&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/B1N4L/perf-hawk.git",
-    "accountId": "961b00ed-3f9c-4fcd-be05-8c5aa6d9b7b2"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/B1N4L/perf-hawk.git&quot;,
+    &quot;accountId&quot;: &quot;961b00ed-3f9c-4fcd-be05-8c5aa6d9b7b2&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="3BiFKLU4AoLSDlV4K2GdENThK2e" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Binal Lokitha/Desktop/Documents/GitHub/perf-hawk/perf-hawk",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Binal Lokitha\\Desktop\\Documents\\GitHub\\perf-hawk\\perf-hawk\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Binal Lokitha/Desktop/Documents/GitHub/perf-hawk/perf-hawk&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Binal Lokitha\\Desktop\\Documents\\GitHub\\perf-hawk\\perf-hawk\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Binal Lokitha\Desktop\Documents\GitHub\perf-hawk\perf-hawk" />
@@ -100,7 +112,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1774963920372</updated>
-      <workItem from="1774963921688" duration="50436000" />
+      <workItem from="1774963921688" duration="56216000" />
+      <workItem from="1775621175578" duration="2713000" />
+      <workItem from="1775623928081" duration="70000" />
+      <workItem from="1775624016755" duration="102000" />
+      <workItem from="1775624153208" duration="739000" />
+      <workItem from="1775624917633" duration="8462000" />
+      <workItem from="1775719638505" duration="163000" />
+      <workItem from="1775911620681" duration="3020000" />
+      <workItem from="1775916501476" duration="33000" />
+      <workItem from="1775916629243" duration="1981000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -142,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775198763708</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(resource): enhance resource management and data retrieval&#10;&#10;- implement polling for CPU and RAM usage&#10;- add static data retrieval for storage and CPU model&#10;- update preload script to handle statistics subscription&#10;- modify main process to send resource statistics to renderer">
+      <option name="closed" value="true" />
+      <created>1775202349404</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1775202349404</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +205,8 @@
     <MESSAGE value="feature(dev): hot build and reload for electron&#10;&#10;- add cross-env, electron-builder, npm-run-all npm packages&#10;- add transpile and dist cmds for both macOS and windows&#10;- change main entry point again to dist-electron&#10;-update run dev command&#10;-add util.ts to detect environment&#10;- configure strict port: 5123 in vite.config.ts and main.ts for dev and other env.s&#10;- add electron-builder.json to configure build info(windows build won't run without an icon)&#10;- add dist-electron directory to gitignore" />
     <MESSAGE value="&#10;feat(build): configure build with dev and production &#10;&#10;- add preload.cts&#10;- configure separate root paths for preload.cjs with pathResolver.ts" />
     <MESSAGE value="feat(resource): implement resource polling and static data retrieval&#10;&#10;- add resourceManager.ts&#10;- add os-utils, os-utils@types npm packages&#10;- fix main.ts with getPreloadPath" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): implement resource polling and static data retrieval&#10;&#10;- add resourceManager.ts&#10;- add os-utils, os-utils@types npm packages&#10;- fix main.ts with getPreloadPath" />
+    <MESSAGE value="feat(resource): enhance resource management and data retrieval&#10;&#10;- implement polling for CPU and RAM usage&#10;- add static data retrieval for storage and CPU model&#10;- update preload script to handle statistics subscription&#10;- modify main process to send resource statistics to renderer" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): enhance resource management and data retrieval&#10;&#10;- implement polling for CPU and RAM usage&#10;- add static data retrieval for storage and CPU model&#10;- update preload script to handle statistics subscription&#10;- modify main process to send resource statistics to renderer" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
