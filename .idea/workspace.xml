@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): define global types and update preload, ui method types&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- enhance IPC communication for statistics subscription&#10;- adjust TypeScript configuration for global types">
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): enhance resource management and IPC communication&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- adjust TypeScript configuration for global types&#10;- add type-safe IPC handling">
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" afterDir="false" />
@@ -13,11 +13,7 @@
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/types.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +115,7 @@
       <workItem from="1775719638505" duration="163000" />
       <workItem from="1775911620681" duration="3020000" />
       <workItem from="1775916501476" duration="33000" />
-      <workItem from="1775916629243" duration="15540000" />
+      <workItem from="1775916629243" duration="18220000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -177,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775919000651</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat(resource): enhance resource management and IPC communication&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- adjust TypeScript configuration for global types&#10;- add type-safe IPC handling">
+      <option name="closed" value="true" />
+      <created>1776015877939</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1776015877939</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,7 +217,8 @@
     <MESSAGE value="feat(resource): implement resource polling and static data retrieval&#10;&#10;- add resourceManager.ts&#10;- add os-utils, os-utils@types npm packages&#10;- fix main.ts with getPreloadPath" />
     <MESSAGE value="feat(resource): enhance resource management and data retrieval&#10;&#10;- implement polling for CPU and RAM usage&#10;- add static data retrieval for storage and CPU model&#10;- update preload script to handle statistics subscription&#10;- modify main process to send resource statistics to renderer" />
     <MESSAGE value="feat(resource): define global types and update preload, ui method types&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- enhance IPC communication for statistics subscription&#10;- adjust TypeScript configuration for global types" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): define global types and update preload, ui method types&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- enhance IPC communication for statistics subscription&#10;- adjust TypeScript configuration for global types" />
+    <MESSAGE value="feat(resource): enhance resource management and IPC communication&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- adjust TypeScript configuration for global types&#10;- add type-safe IPC handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): enhance resource management and IPC communication&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- adjust TypeScript configuration for global types&#10;- add type-safe IPC handling" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
