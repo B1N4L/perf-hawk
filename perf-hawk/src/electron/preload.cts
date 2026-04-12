@@ -12,5 +12,8 @@ electron.contextBridge.exposeInMainWorld('electron', {
         return electron.ipcRenderer.invoke("getStaticData");
     },
 } satisfies Window["electron"]) //electron object from window
+// satisfies: tells typescript we expect this object of this type, if it doesn't exist, throw an error.
+
+
 
 console.log("preload loaded");

@@ -1,9 +1,9 @@
 import {app, BrowserWindow} from "electron"
 import path from "path"
-import {isDev} from "./util.js";
+import {ipcMainHandle, isDev} from "./util.js";
 import {getStaticData, pollResources} from "./resourceManager.js";
 import {getPreloadPath} from "./pathResolver.js";
-import electron from "electron";
+//import {ipcMain, webContents} from 'electron';
 
 
 type test = string; // to check running in javascript. javascript doesn't know what a type is so an error will be thrown
@@ -25,8 +25,16 @@ app.on("ready", () => {
 
     pollResources(mainWindow);
 
-    electron.ipcMain.handle("getStaticData", () => {
+    ipcMainHandle("getStaticData", ()=>{
         return getStaticData();
     })
+    // handleGetStaticData(() => {
+    //     return getStaticData();
+    // });
 
 });
+
+// function handleGetStaticData(callback: () => StaticData) {
+//     // ipcMain.handle('getStaticData', callback); // this is not type safe
+//     ipcHandle('getStaticData', callback); // this is type safe
+// }

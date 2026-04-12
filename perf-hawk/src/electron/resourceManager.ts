@@ -1,7 +1,8 @@
 import osUtils from "os-utils"
 import fs from "fs"
 import * as os from "node:os";
-import {BrowserWindow} from "electron";     //requires node 18 or later
+import {BrowserWindow} from "electron";
+import {ipcWebContentsSend} from "./util.js";     //requires node 18 or later
 
 const POLLING_INTERVAL = 500 //ms
 
@@ -13,7 +14,8 @@ export function pollResources(mainWindow: BrowserWindow){
         const storageData = getStorageData();
         // console.log({cpuUsage, ramUsage, storageUsage: storageData.usage});
         // everything that Electron needs to interact with the actual window is inside the webContents
-        mainWindow.webContents.send("statistics", {
+        // mainWindow.webContents.send("statistics", { //is not type safe
+        ipcWebContentsSend("statistics", mainWindow.webContents, { // is type safe
             cpuUsage,
             ramUsage,
             storageUsage: storageData.usage
@@ -34,7 +36,7 @@ export function getStaticData(){
     }
 }
 
-function getCpuUsage(){
+function getCpuUsage(): Promise<number> {
     //new way, uses promises instead of callbacks, which is more modern and easier to work with
     return new Promise((resolve) => {
         osUtils.cpuUsage(resolve);
