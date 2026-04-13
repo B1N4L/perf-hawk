@@ -11,11 +11,13 @@
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/components/BaseChart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/components/Chart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/hooks/useStatistics.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +120,7 @@
       <workItem from="1775719638505" duration="163000" />
       <workItem from="1775911620681" duration="3020000" />
       <workItem from="1775916501476" duration="33000" />
-      <workItem from="1775916629243" duration="29262000" />
+      <workItem from="1775916629243" duration="34565000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -208,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776071937625</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat(resource): improve event subscription handling and define unsubscribe function type">
+      <option name="closed" value="true" />
+      <created>1776073777758</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1776073777758</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
