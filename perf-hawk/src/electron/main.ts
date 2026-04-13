@@ -1,8 +1,9 @@
-import {app, BrowserWindow, Tray} from "electron"
-import path from "path"
-import {getAssetPath, getUIPath, ipcMainHandle, isDev} from "./util.js";
+import {app, BrowserWindow} from "electron"
+import {ipcMainHandle, isDev} from "./util.js";
+import {getUIPath} from "./pathResolver.js";
 import {getStaticData, pollResources} from "./resourceManager.js";
 import {getPreloadPath} from "./pathResolver.js";
+import {createTray} from "./tray.js";
 //import {ipcMain, webContents} from 'electron';
 
 
@@ -29,15 +30,41 @@ app.on("ready", () => {
         return getStaticData();
     });
 
-    new Tray(path.join(getAssetPath(), process.platform === "win32" ? "trayIconTemplate.png" : "trayIcon.png"));
+    // new Tray(path.join(getAssetPath(), process.platform === "win32" ? "trayIconTemplate.png" : "trayIcon.png"));
+    createTray(mainWindow);
 
     // handleGetStaticData(() => {
     //     return getStaticData();
     // });
-
+    handleCloseEvents(mainWindow);
 });
 
 // function handleGetStaticData(callback: () => StaticData) {
 //     // ipcMain.handle('getStaticData', callback); // this is not type safe
 //     ipcHandle('getStaticData', callback); // this is type safe
 // }
+function handleCloseEvents(mainWindow: BrowserWindow) {
+
+    let willClose = false;
+    mainWindow.on("close", (e) => {
+        if (willClose) {
+            return;
+        }
+
+        e.preventDefault(); // prevent the default close behavior, which would quit the app
+        mainWindow.hide(); // hide the window instead of closing it, so the app keeps running in the background and can be accessed from the system tray
+        if (app.dock) { // if the app has a dock (eg: on macOS)
+            app.dock.hide(); // hide the dock icon as well, to prevent confusion for users that might think the app is still open when it's actually hidden in the system tray
+
+        }
+    });
+
+    app.on("before-quit", () => { // if close happens first and before quit happens after that, willClose= false
+        willClose = true;
+    })
+
+    mainWindow.on("show", () => {
+        willClose = false;
+    })
+
+}

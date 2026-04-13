@@ -1,6 +1,7 @@
-import {app, ipcMain, type WebContents, type WebFrameMain} from 'electron';
-import path from "path";
+import {ipcMain, type WebContents, type WebFrameMain} from 'electron';
+
 import { pathToFileURL} from "url";
+import {getUIPath} from "./pathResolver.js";
 
 export function isDev(): boolean {
     return process.env.NODE_ENV === 'development';
@@ -27,13 +28,7 @@ export function ipcWebContentsSend<Key extends keyof EventPayloadMapping>(
 }
 
 
-export function getUIPath():string {
-    return path.join(app.getAppPath(), '/dist-react/index.html');
-}
 
-export function getAssetPath():string {
-    return path.join(app.getAppPath(), isDev() ? '.' : '..', '/src/assets');
-}
 
 // path validations to prevent malicious events
 export function validateEventFrame(frame: WebFrameMain | null) {
