@@ -3,8 +3,8 @@ const electron = require('electron');
 electron.contextBridge.exposeInMainWorld('electron', {
 
     subscribeStatistics: (callback) => {
-        // electron.ipcRenderer.on("statistics", (_:any, stats:any)=>{
-        ipcOn("statistics", (stats)=>{
+        // electron.ipcRenderer.on("statistics", (_:any, stats:any)=>{ //is not type safe
+        return ipcOn("statistics", (stats)=>{ //is type safe
             callback(stats);
         });
     },
@@ -25,7 +25,7 @@ function ipcOn<Key extends keyof EventPayloadMapping>(
 ) {
     const cBack = (_: Electron.IpcRendererEvent, payload: any) => callback(payload);
     electron.ipcRenderer.on(key, cBack);
-    return () => electron.ipcRenderer.off(key, cBack);
+    return () => electron.ipcRenderer.off(key, cBack); // used to unsubscribe upon returning
 }
 
 function ipcSend<Key extends keyof EventPayloadMapping>(

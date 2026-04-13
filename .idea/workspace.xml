@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): enhance resource management and IPC communication&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- adjust TypeScript configuration for global types&#10;- add type-safe IPC handling">
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): improve event subscription handling and define unsubscribe function type">
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" afterDir="false" />
@@ -13,7 +13,10 @@
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +118,7 @@
       <workItem from="1775719638505" duration="163000" />
       <workItem from="1775911620681" duration="3020000" />
       <workItem from="1775916501476" duration="33000" />
-      <workItem from="1775916629243" duration="18220000" />
+      <workItem from="1775916629243" duration="29262000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -181,7 +184,31 @@
       <option name="project" value="LOCAL" />
       <updated>1776015877939</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat(resource): enhance IPC handling and static data retrieval&#10;&#10;- refactor IPC methods for type safety&#10;- update preload script to improve statistics subscription&#10;- adjust TypeScript configuration for global types">
+      <option name="closed" value="true" />
+      <created>1776018306477</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1776018306477</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat(resource): implement UI path retrieval and event frame validation">
+      <option name="closed" value="true" />
+      <created>1776057754634</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1776057754634</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat(resource): improve event subscription handling and define unsubscribe function type">
+      <option name="closed" value="true" />
+      <created>1776071937625</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1776071937625</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +245,10 @@
     <MESSAGE value="feat(resource): enhance resource management and data retrieval&#10;&#10;- implement polling for CPU and RAM usage&#10;- add static data retrieval for storage and CPU model&#10;- update preload script to handle statistics subscription&#10;- modify main process to send resource statistics to renderer" />
     <MESSAGE value="feat(resource): define global types and update preload, ui method types&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- enhance IPC communication for statistics subscription&#10;- adjust TypeScript configuration for global types" />
     <MESSAGE value="feat(resource): enhance resource management and IPC communication&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- adjust TypeScript configuration for global types&#10;- add type-safe IPC handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): enhance resource management and IPC communication&#10;&#10;- implement static data retrieval for storage and CPU model&#10;- adjust TypeScript configuration for global types&#10;- add type-safe IPC handling" />
+    <MESSAGE value="feat(resource): enhance IPC handling and static data retrieval&#10;&#10;- refactor IPC methods for type safety&#10;- update preload script to improve statistics subscription&#10;- adjust TypeScript configuration for global types" />
+    <MESSAGE value="feat(resource): implement UI path retrieval and event frame validation" />
+    <MESSAGE value="feat(resource): improve event subscription handling and define unsubscribe function type" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): improve event subscription handling and define unsubscribe function type" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
