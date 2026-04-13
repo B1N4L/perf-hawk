@@ -1,4 +1,6 @@
-import {ipcMain, type WebContents} from 'electron';
+import {app, ipcMain, type WebContents, type WebFrameMain} from 'electron';
+import path from "path";
+import { pathToFileURL} from "url";
 
 export function isDev(): boolean {
     return process.env.NODE_ENV === 'development';
@@ -7,20 +9,14 @@ export function isDev(): boolean {
 // Key extends keyof EventPayloadMapping: limiting key to any attribute inside EventPayloadMapping, so we can only use keys that are defined in EventPayloadMapping, which is a type that maps event names to their payload types. This ensures type safety when handling IPC events.
 export function ipcMainHandle<Key extends keyof EventPayloadMapping>(
     key: Key,
-    handler: () => EventPayloadMapping[Key] // if i passed key from EventPayloadMapping(eg: statistics), then the handler must return the corresponding payload type for that key(returns Statistics from EventPayloadMapping)
+    handler: () => EventPayloadMapping[Key] // if key is from EventPayloadMapping(eg: statistics), then the handler must return the corresponding payload type for that key(returns Statistics from EventPayloadMapping)
 ){ //key was set as a generic
-    ipcMain.handle(key, () => handler());
+    ipcMain.handle(key, (event) => {
+        // event.senderFrame.url == getUIPath(); // this is not working for both dev and electron environments
+        validateEventFrame(event.senderFrame); //generalized event frame validation for each ipcMainHandle call
+        return handler();
+    });
 }
-
-// export function ipcMainHandle<Key extends keyof EventPayloadMapping>(
-//     key: Key,
-//     handler: () => EventPayloadMapping[Key]
-// ) {
-//     ipcMain.handle(key, (event) => {
-//         //validateEventFrame(event.senderFrame);
-//         return handler();
-//     });
-// }
 
 export function ipcWebContentsSend<Key extends keyof EventPayloadMapping>(
     key: Key,
@@ -28,4 +24,29 @@ export function ipcWebContentsSend<Key extends keyof EventPayloadMapping>(
     payload: EventPayloadMapping[Key]
 ){ //key was set as a generic
     webContents.send(key, payload);
+}
+
+
+export function getUIPath():string {
+    return path.join(app.getAppPath(), '/dist-react/index.html');
+}
+
+export function getAssetPath():string {
+    return path.join(app.getAppPath(), isDev() ? '.' : '..', '/src/assets');
+}
+
+// path validations to prevent malicious events
+export function validateEventFrame(frame: WebFrameMain | null) {
+    console.log('validateEventFrame', frame?.url);
+    if (!frame) {
+        throw new Error('Malicious event: senderFrame is null');
+    }
+
+    if (isDev() && new URL(frame.url).host === 'localhost:5123') {
+        return;
+    }
+
+    if (frame.url !== pathToFileURL(getUIPath()).toString()) {
+        throw new Error('Malicious event');
+    }
 }

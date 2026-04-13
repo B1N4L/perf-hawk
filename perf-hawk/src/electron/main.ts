@@ -1,6 +1,6 @@
 import {app, BrowserWindow} from "electron"
 import path from "path"
-import {ipcMainHandle, isDev} from "./util.js";
+import {getUIPath, ipcMainHandle, isDev} from "./util.js";
 import {getStaticData, pollResources} from "./resourceManager.js";
 import {getPreloadPath} from "./pathResolver.js";
 //import {ipcMain, webContents} from 'electron';
@@ -20,7 +20,7 @@ app.on("ready", () => {
         mainWindow.loadURL("http://localhost:5123");
     } else {
         //path.join does things like converting backslashes to forward slashes on Windows, also makes sure the path is correct for the operating system
-        mainWindow.loadFile(path.join(app.getAppPath(), "dist-react", "index.html"));
+        mainWindow.loadFile(getUIPath());
     }
 
     pollResources(mainWindow);
