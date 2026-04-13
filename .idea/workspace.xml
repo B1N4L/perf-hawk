@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): improve event subscription handling and define unsubscribe function type">
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): add chart components and statistics hook for performance visualization">
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/components/BaseChart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/components/Chart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/hooks/useStatistics.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/electron-builder.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/electron-builder.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +117,7 @@
       <workItem from="1775719638505" duration="163000" />
       <workItem from="1775911620681" duration="3020000" />
       <workItem from="1775916501476" duration="33000" />
-      <workItem from="1775916629243" duration="34565000" />
+      <workItem from="1775916629243" duration="39012000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -218,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776073777758</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat(resource): add chart components and statistics hook for performance visualization">
+      <option name="closed" value="true" />
+      <created>1776080648078</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1776080648078</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +263,8 @@
     <MESSAGE value="feat(resource): enhance IPC handling and static data retrieval&#10;&#10;- refactor IPC methods for type safety&#10;- update preload script to improve statistics subscription&#10;- adjust TypeScript configuration for global types" />
     <MESSAGE value="feat(resource): implement UI path retrieval and event frame validation" />
     <MESSAGE value="feat(resource): improve event subscription handling and define unsubscribe function type" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): improve event subscription handling and define unsubscribe function type" />
+    <MESSAGE value="feat(resource): add chart components and statistics hook for performance visualization" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): add chart components and statistics hook for performance visualization" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

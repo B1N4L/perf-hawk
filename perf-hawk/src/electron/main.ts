@@ -1,6 +1,6 @@
-import {app, BrowserWindow} from "electron"
+import {app, BrowserWindow, Tray} from "electron"
 import path from "path"
-import {getUIPath, ipcMainHandle, isDev} from "./util.js";
+import {getAssetPath, getUIPath, ipcMainHandle, isDev} from "./util.js";
 import {getStaticData, pollResources} from "./resourceManager.js";
 import {getPreloadPath} from "./pathResolver.js";
 //import {ipcMain, webContents} from 'electron';
@@ -27,7 +27,10 @@ app.on("ready", () => {
 
     ipcMainHandle("getStaticData", ()=>{
         return getStaticData();
-    })
+    });
+
+    new Tray(path.join(getAssetPath(), process.platform === "win32" ? "trayIconTemplate.png" : "trayIcon.png"));
+
     // handleGetStaticData(() => {
     //     return getStaticData();
     // });
