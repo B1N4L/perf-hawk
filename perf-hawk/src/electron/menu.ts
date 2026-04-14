@@ -19,31 +19,31 @@ export function createMenu(mainWindow: BrowserWindow) {
                     },
                 ],
             },
-            // {
-            //     label: 'View',
-            //     type: 'submenu',
-            //     submenu: [
-            //         {
-            //             label: 'CPU',
-            //             click: () =>
-            //                 ipcWebContentsSend('changeView', mainWindow.webContents, 'CPU'),
-            //         },
-            //         {
-            //             label: 'RAM',
-            //             click: () =>
-            //                 ipcWebContentsSend('changeView', mainWindow.webContents, 'RAM'),
-            //         },
-            //         {
-            //             label: 'STORAGE',
-            //             click: () =>
-            //                 ipcWebContentsSend(
-            //                     'changeView',
-            //                     mainWindow.webContents,
-            //                     'STORAGE'
-            //                 ),
-            //         },
-            //     ],
-            // },
+            {
+                label: 'View',
+                type: 'submenu',
+                submenu: [
+                    {
+                        label: 'CPU',
+                        click: () =>
+                            ipcWebContentsSend('changeView', mainWindow.webContents, 'CPU'),
+                    },
+                    {
+                        label: 'RAM',
+                        click: () =>
+                            ipcWebContentsSend('changeView', mainWindow.webContents, 'RAM'),
+                    },
+                    {
+                        label: 'STORAGE',
+                        click: () =>
+                            ipcWebContentsSend(
+                                'changeView',
+                                mainWindow.webContents,
+                                'STORAGE'
+                            ),
+                    },
+                ],
+            },
         ])
     );
 }

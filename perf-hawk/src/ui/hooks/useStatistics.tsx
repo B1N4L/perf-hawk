@@ -6,7 +6,7 @@ export function useStatistics (dataPointCount: number, ): Statistics[] {
 
     // when this component re-renders or unmounts unsubscribe from the statistics event to prevent memory leaks and unnecessary event handling.
     // (eg: otherwise you may keep calling a listener after the component is unmounted, which will cause stale updates, cause errors in the console and potentially crash the app if not handled properly.)
-    useEffect(() => {
+    useEffect((): UnsubscribeFunction => {
         // @ts-ignore
         const unSub = window.electron.subscribeStatistics(stats => {
             setValue(prev => {

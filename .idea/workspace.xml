@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(resource): add chart components and statistics hook for performance visualization">
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(menu): add application menu with quit and DevTools options">
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" afterDir="false" />
@@ -13,9 +13,14 @@
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/electron-builder.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/electron-builder.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/menu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/menu.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/hooks/useStatistics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/hooks/useStatistics.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/types.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +60,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -117,7 +122,7 @@
       <workItem from="1775719638505" duration="163000" />
       <workItem from="1775911620681" duration="3020000" />
       <workItem from="1775916501476" duration="33000" />
-      <workItem from="1775916629243" duration="39012000" />
+      <workItem from="1775916629243" duration="54554000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -223,7 +228,31 @@
       <option name="project" value="LOCAL" />
       <updated>1776080648078</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat(build): update build settings&#10;&#10;- add Content-Security-Policy configs&#10;- add tray icons">
+      <option name="closed" value="true" />
+      <created>1776088954515</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1776088954515</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat(tray): implement system tray feature&#10;&#10;- implement close event functions&#10;- implement background run&#10;- add tray options">
+      <option name="closed" value="true" />
+      <created>1776093735191</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1776093735191</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat(menu): add application menu with quit and DevTools options">
+      <option name="closed" value="true" />
+      <created>1776102649354</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1776102649354</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +293,10 @@
     <MESSAGE value="feat(resource): implement UI path retrieval and event frame validation" />
     <MESSAGE value="feat(resource): improve event subscription handling and define unsubscribe function type" />
     <MESSAGE value="feat(resource): add chart components and statistics hook for performance visualization" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(resource): add chart components and statistics hook for performance visualization" />
+    <MESSAGE value="feat(build): update build settings&#10;&#10;- add Content-Security-Policy configs&#10;- add tray icons" />
+    <MESSAGE value="feat(tray): implement system tray feature&#10;&#10;- implement close event functions&#10;- implement background run&#10;- add tray options" />
+    <MESSAGE value="feat(menu): add application menu with quit and DevTools options" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(menu): add application menu with quit and DevTools options" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

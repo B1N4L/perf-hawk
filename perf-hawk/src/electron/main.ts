@@ -1,5 +1,5 @@
 import {app, BrowserWindow} from "electron"
-import {ipcMainHandle, isDev} from "./util.js";
+import {ipcMainHandle, ipcMainOn, isDev} from "./util.js";
 import {getUIPath} from "./pathResolver.js";
 import {getStaticData, pollResources} from "./resourceManager.js";
 import {getPreloadPath} from "./pathResolver.js";
@@ -15,7 +15,8 @@ app.on("ready", () => {
     const mainWindow = new BrowserWindow({
         webPreferences: {
             preload: getPreloadPath(),
-        }
+        },
+        frame: false,
     })
 
     if(isDev()) {
@@ -29,6 +30,20 @@ app.on("ready", () => {
 
     ipcMainHandle("getStaticData", ()=>{
         return getStaticData();
+    });
+
+    ipcMainOn('sendFrameAction', (payload: FrameWindowAction) => {
+        switch (payload) {
+            case 'CLOSE':
+                mainWindow.close();
+                break;
+            case 'MAXIMIZE':
+                mainWindow.maximize();
+                break;
+            case 'MINIMIZE':
+                mainWindow.minimize();
+                break;
+        }
     });
 
     // new Tray(path.join(getAssetPath(), process.platform === "win32" ? "trayIconTemplate.png" : "trayIcon.png"));
