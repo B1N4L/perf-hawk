@@ -3,6 +3,7 @@ import { getAssetPath } from './pathResolver.js';
 import path from 'path';
 
 export function createTray(mainWindow: BrowserWindow) {
+    //TODO: add unit test
     const tray = new Tray(
         path.join(
             getAssetPath(),
