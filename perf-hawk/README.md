@@ -38,6 +38,70 @@ Once you have PerfHawk up and running, you can use it to monitor the performance
 - Switch between RAM, CPU, and Storage tabs to view different performance metrics.
 ## Folder Structure
 
+```text
+perf-hawk/
+|-- desktopIcon.png
+|-- electron-builder.json
+|-- eslint.config.js
+|-- index.html
+|-- package-lock.json
+|-- package.json
+|-- playwright.config.ts
+|-- README.md
+|-- src/
+|   |-- assets/
+|   |   |-- hero.png
+|   |   |-- react.svg
+|   |   |-- screenshot.png
+|   |   |-- trayIcon.png
+|   |   |-- trayIconTemplate.png
+|   |   `-- vite.svg
+|   |-- electron/
+|   |   |-- main.js
+|   |   |-- main.ts
+|   |   |-- menu.ts
+|   |   |-- pathResolver.js
+|   |   |-- pathResolver.ts
+|   |   |-- preload.cjs
+|   |   |-- preload.cts
+|   |   |-- resourceManager.js
+|   |   |-- resourceManager.ts
+|   |   |-- tray.ts
+|   |   |-- tsconfig.json
+|   |   |-- util.js
+|   |   `-- util.ts
+|   |-- ui/
+|   |   |-- App.css
+|   |   |-- App.js
+|   |   |-- App.tsx
+|   |   |-- components/
+|   |   |   |-- BaseChart.tsx
+|   |   |   |-- Chart.tsx
+|   |   |   |-- Header.tsx
+|   |   |   `-- SelectOption.tsx
+|   |   |-- hooks/
+|   |   |   |-- useStaticData.tsx
+|   |   |   `-- useStatistics.tsx
+|   |   |-- index.css
+|   |   |-- main.js
+|   |   `-- main.tsx
+|   `-- test-unit/
+|       `-- tray.test.ts
+|-- tests-e2e/
+|   `-- example.spec.ts
+|-- dist/
+|-- dist-electron/
+|-- dist-react/
+|-- node_modules/
+|-- playwright-report/
+|-- test-results/
+|-- tsconfig.app.json
+|-- tsconfig.node.json
+|-- tsconfig.json
+|-- types.d.ts
+`-- vite.config.ts
+```
+
 ## Key Concepts/Learning Points*
 - Implementing IPC communication between the Electron main process and the React renderer process to enable real-time performance monitoring.
 - Improved TypeScript type safety across modules
