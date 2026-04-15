@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(menu): add application menu with quit and DevTools options">
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(tests): add Playwright configuration and initial end-to-end tests">
+      <change afterPath="$PROJECT_DIR$/perf-hawk/playwright.config.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" afterDir="false" />
@@ -12,15 +13,11 @@
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/perf-hawk/tests-e2e/example.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/menu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/menu.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/electron/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/hooks/useStatistics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/hooks/useStatistics.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perf-hawk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,24 +68,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Binal Lokitha/Desktop/Documents/GitHub/perf-hawk/perf-hawk&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Binal Lokitha\\Desktop\\Documents\\GitHub\\perf-hawk\\perf-hawk\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Binal Lokitha/Desktop/Documents/GitHub/perf-hawk/perf-hawk",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Binal Lokitha\\Desktop\\Documents\\GitHub\\perf-hawk\\perf-hawk\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Binal Lokitha\Desktop\Documents\GitHub\perf-hawk\perf-hawk" />
@@ -122,7 +119,7 @@
       <workItem from="1775719638505" duration="163000" />
       <workItem from="1775911620681" duration="3020000" />
       <workItem from="1775916501476" duration="33000" />
-      <workItem from="1775916629243" duration="54554000" />
+      <workItem from="1775916629243" duration="64070000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -252,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776102649354</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat(ui): implement header with window control buttons and view switching functionality">
+      <option name="closed" value="true" />
+      <created>1776177294144</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1776177294144</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +301,9 @@
     <MESSAGE value="feat(build): update build settings&#10;&#10;- add Content-Security-Policy configs&#10;- add tray icons" />
     <MESSAGE value="feat(tray): implement system tray feature&#10;&#10;- implement close event functions&#10;- implement background run&#10;- add tray options" />
     <MESSAGE value="feat(menu): add application menu with quit and DevTools options" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(menu): add application menu with quit and DevTools options" />
+    <MESSAGE value="feat(ui): implement header with window control buttons and view switching functionality" />
+    <MESSAGE value="feat(tests): add Playwright configuration and initial end-to-end tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(tests): add Playwright configuration and initial end-to-end tests" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
