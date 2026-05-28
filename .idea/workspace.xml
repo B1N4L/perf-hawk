@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="test(tests): enhance unit tests for tray functionality with additional assertions">
+    <list default="true" id="1d77a0d9-7a49-4894-9626-b52ca73e5be6" name="Changes" comment="feat(docs): enhance README with project folder structure and key concepts">
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/main.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/electron/util.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/components/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/components/SelectOption.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/hooks/useStaticData.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perf-hawk/src/ui/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/perf-hawk/src/ui/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +25,7 @@
     </persistenceIdMap>
   </component>
   <component name="CopilotUserSelectedChatMode">
-    <option name="chatModeId" value="Ask" />
+    <option name="chatModeId" value="Agent" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tests/unit" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,7 +58,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -79,9 +75,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Binal Lokitha/Desktop/Documents/GitHub/perf-hawk/perf-hawk&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Binal Lokitha/Desktop/Documents/GitHub/perf-hawk&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -126,7 +122,12 @@
       <workItem from="1775911620681" duration="3020000" />
       <workItem from="1775916501476" duration="33000" />
       <workItem from="1775916629243" duration="72770000" />
-      <workItem from="1776250484721" duration="449000" />
+      <workItem from="1776250484721" duration="7106000" />
+      <workItem from="1776263816923" duration="3230000" />
+      <workItem from="1776501508013" duration="663000" />
+      <workItem from="1776685766472" duration="21000" />
+      <workItem from="1776701422543" duration="11747000" />
+      <workItem from="1777311817141" duration="50000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;&#10;- move src components to ui&#10;- delete public directory (for embedding in electron)&#10;- change react outDir in vite.config.ts(solve react and electron conflict)&#10;- add dist-react to gitignore">
       <option name="closed" value="true" />
@@ -296,7 +297,39 @@
       <option name="project" value="LOCAL" />
       <updated>1776249171366</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat(ui): enhance App component with header and selectable options for CPU, RAM, and STORAGE">
+      <option name="closed" value="true" />
+      <created>1776250953703</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1776250953703</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat(docs): update README with project overview, features, technologies, installation instructions, and usage guidelines">
+      <option name="closed" value="true" />
+      <created>1776262471255</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1776262471255</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat(docs): enhance README with project folder structure and key concepts">
+      <option name="closed" value="true" />
+      <created>1776262783050</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1776262783050</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feat(docs): enhance README with project folder structure and key concepts">
+      <option name="closed" value="true" />
+      <created>1776264048189</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1776264048189</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,12 +337,18 @@
     <option name="exactExcludedFiles">
       <list>
         <option value="$PROJECT_DIR$/perf-hawk/src/ui/main.js" />
+        <option value="$PROJECT_DIR$/perf-hawk/src/electron/main.js" />
+        <option value="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.js" />
         <option value="$PROJECT_DIR$/perf-hawk/src/ui/App.js" />
         <option value="$PROJECT_DIR$/perf-hawk/src/electron/util.js" />
         <option value="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" />
         <option value="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" />
         <option value="$PROJECT_DIR$/perf-hawk/src/electron/main.js" />
         <option value="$PROJECT_DIR$/perf-hawk/src/electron/resourceManager.js" />
+        <option value="$PROJECT_DIR$/perf-hawk/src/ui/App.js" />
+        <option value="$PROJECT_DIR$/perf-hawk/src/electron/util.js" />
+        <option value="$PROJECT_DIR$/perf-hawk/src/electron/pathResolver.js" />
+        <option value="$PROJECT_DIR$/perf-hawk/src/electron/preload.cjs" />
       </list>
     </option>
   </component>
@@ -345,7 +384,10 @@
     <MESSAGE value="feat(tests): add unit tests for tray functionality using Vitest" />
     <MESSAGE value="init" />
     <MESSAGE value="test(tests): enhance unit tests for tray functionality with additional assertions" />
-    <option name="LAST_COMMIT_MESSAGE" value="test(tests): enhance unit tests for tray functionality with additional assertions" />
+    <MESSAGE value="feat(ui): enhance App component with header and selectable options for CPU, RAM, and STORAGE" />
+    <MESSAGE value="feat(docs): update README with project overview, features, technologies, installation instructions, and usage guidelines" />
+    <MESSAGE value="feat(docs): enhance README with project folder structure and key concepts" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(docs): enhance README with project folder structure and key concepts" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

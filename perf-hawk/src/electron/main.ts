@@ -5,6 +5,7 @@ import {getStaticData, pollResources} from "./resourceManager.js";
 import {getPreloadPath} from "./pathResolver.js";
 import {createTray} from "./tray.js";
 import {createMenu} from "./menu.js";
+// import {initializeDatabase, shutdownDatabase} from "./db/index.js";
 //import {ipcMain, webContents} from 'electron';
 
 
@@ -12,6 +13,15 @@ import {createMenu} from "./menu.js";
 
 //create an Electron app that user can interact with. this file is added to package.json's main path. main.ts will run once the Electron starts
 app.on("ready", () => {
+    // try {
+    //     const { dbPath } = initializeDatabase();
+    //     console.log(`SQLite initialized at ${dbPath}`);
+    // } catch (error) {
+    //     console.error("Failed to initialize SQLite", error);
+    //     app.quit();
+    //     return;
+    // }
+
     const mainWindow = new BrowserWindow({
         webPreferences: {
             preload: getPreloadPath(),
@@ -78,6 +88,7 @@ function handleCloseEvents(mainWindow: BrowserWindow) {
 
     app.on("before-quit", () => { // if close happens first and before quit happens after that, willClose= false
         willClose = true;
+        // shutdownDatabase();
     })
 
     mainWindow.on("show", () => {
