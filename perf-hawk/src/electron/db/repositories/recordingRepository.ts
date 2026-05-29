@@ -7,19 +7,36 @@ export type NewSample = {
     storageUsage: number;
 };
 
+export type RecordingSessionMode = 'manual' | 'background';
+export type RecordingSessionEventType = 'start' | 'pause' | 'resume' | 'stop';
+
 export class RecordingRepository {
     private insertSampleStmt: Database.Statement | null = null;
+    private insertSessionEventStmt: Database.Statement | null = null;
 
     constructor(private readonly db: Database.Database) {}
 
     // Inserts a row into recording_sessions with mode and snapshot fields
-    createSession(mode: 'manual' | 'background', snapshot: { cpuModel?: string; totalMemGB?: number; totalStorageGB?: number }): number {
+    createSession(mode: RecordingSessionMode, snapshot: { cpuModel?: string; totalMemGB?: number; totalStorageGB?: number }): number {
         const stmt = this.db.prepare(`
             INSERT INTO recording_sessions (mode, started_at, cpu_model, total_mem_gb, total_storage_gb)
             VALUES (?, datetime('now'), ?, ?, ?);
         `);
 
         const info = stmt.run(mode, snapshot.cpuModel ?? null, snapshot.totalMemGB ?? null, snapshot.totalStorageGB ?? null);
+        return Number(info.lastInsertRowid);
+    }
+
+    createSessionEvent(sessionId: number, eventType: RecordingSessionEventType): number {
+        if (!this.insertSessionEventStmt) {
+            this.insertSessionEventStmt = this.db.prepare(`
+                INSERT INTO recording_session_events (session_id, event_type, event_at)
+                VALUES (?, ?, datetime('now'));
+            `);
+        }
+
+        const info = this.insertSessionEventStmt.run(sessionId, eventType);
+
         return Number(info.lastInsertRowid);
     }
 

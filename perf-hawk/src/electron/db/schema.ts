@@ -20,7 +20,18 @@ CREATE TABLE IF NOT EXISTS performance_samples (
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+CREATE TABLE IF NOT EXISTS recording_session_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id INTEGER NOT NULL REFERENCES recording_sessions(id) ON DELETE CASCADE,
+    event_type TEXT NOT NULL CHECK(event_type IN ('start','pause','resume','stop')),
+    event_at TEXT NOT NULL DEFAULT (datetime('now')),
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 CREATE INDEX IF NOT EXISTS idx_performance_samples_session_sampled_at
 ON performance_samples(session_id, sampled_at);
+
+CREATE INDEX IF NOT EXISTS idx_recording_session_events_session_event_at
+ON recording_session_events(session_id, event_at);
 `;
 

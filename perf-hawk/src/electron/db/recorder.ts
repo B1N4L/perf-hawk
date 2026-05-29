@@ -1,27 +1,40 @@
-import { RecordingRepository, type NewSample } from './repositories/recordingRepository.js';
+import {
+    RecordingRepository,
+    type NewSample,
+    type RecordingSessionMode,
+} from './repositories/recordingRepository.js';
 
 export type RecorderOptions = {
     checkpointIntervalMs?: number;
-    onStatus?: (status: { isRecording: boolean; sessionId?: number }) => void;
+    onStatus?: (status: {
+        state: RecorderLifecycleState;
+        isRecording: boolean;
+        isPaused: boolean;
+        sessionId?: number;
+    }) => void;
 };
+
+type RecorderLifecycleState = 'idle' | 'recording' | 'paused';
 
 export class Recorder {
     private buffer: NewSample[] = [];
     private currentSessionId: number | null = null;
     private timer: NodeJS.Timeout | null = null;
-    private isRecording = false;
+    private state: RecorderLifecycleState = 'idle';
 
     constructor(private readonly repo: RecordingRepository, private readonly opts: RecorderOptions = {}) {}
 
-    start(mode: 'manual' | 'background' = 'manual', snapshot: { cpuModel?: string; totalMemGB?: number; totalStorageGB?: number } = {}): { sessionId: number } {
-        if (this.isRecording) {
+    start(mode: RecordingSessionMode = 'manual', snapshot: { cpuModel?: string; totalMemGB?: number; totalStorageGB?: number } = {}): { sessionId: number } {
+        if (this.state !== 'idle') {
             return { sessionId: this.currentSessionId! };
         }
 
         const sessionId = this.repo.createSession(mode, snapshot);
         this.currentSessionId = sessionId;
-        this.isRecording = true;
+        this.state = 'recording';
         this.buffer = [];
+
+        this.repo.createSessionEvent(sessionId, 'start');
 
         const interval = this.opts.checkpointIntervalMs ?? 60_000;
         this.timer = setInterval(() => this.checkpoint(), interval);
@@ -31,8 +44,38 @@ export class Recorder {
         return { sessionId };
     }
 
+    pause(): { sessionId: number } {
+        if (this.state !== 'recording' || !this.currentSessionId) {
+            return { sessionId: this.currentSessionId ?? -1 };
+        }
+
+        this.flushTimer();
+        this.checkpoint();
+        this.state = 'paused';
+        this.repo.createSessionEvent(this.currentSessionId, 'pause');
+        this.emitStatus();
+
+        return { sessionId: this.currentSessionId };
+    }
+
+    resume(): { sessionId: number } {
+        if (this.state !== 'paused' || !this.currentSessionId) {
+            return { sessionId: this.currentSessionId ?? -1 };
+        }
+
+        this.state = 'recording';
+        this.repo.createSessionEvent(this.currentSessionId, 'resume');
+
+        const interval = this.opts.checkpointIntervalMs ?? 60_000;
+        this.timer = setInterval(() => this.checkpoint(), interval);
+
+        this.emitStatus();
+
+        return { sessionId: this.currentSessionId };
+    }
+
     captureSample(sample: { cpuUsage: number; ramUsage: number; storageUsage: number }) {
-        if (!this.isRecording || !this.currentSessionId) return;
+        if (this.state !== 'recording' || !this.currentSessionId) return;
 
         const s: NewSample = {
             sampledAt: new Date().toISOString(),
@@ -49,7 +92,7 @@ export class Recorder {
     }
 
     checkpoint() {
-        if (!this.isRecording || !this.currentSessionId) return 0;
+        if (this.state !== 'recording' || !this.currentSessionId) return 0;
         if (this.buffer.length === 0) return 0;
 
         try {
@@ -63,32 +106,33 @@ export class Recorder {
     }
 
     stop(): { sessionId: number; sampleCount: number } {
-        if (!this.isRecording || !this.currentSessionId) {
+        if (this.state === 'idle' || !this.currentSessionId) {
             return { sessionId: -1, sampleCount: 0 };
         }
 
-        if (this.timer) {
-            clearInterval(this.timer);
-            this.timer = null;
-        }
-
-        // flush remaining
+        this.flushTimer();
         this.checkpoint();
 
         // close session
         const sid = this.currentSessionId;
+        this.repo.createSessionEvent(sid!, 'stop');
         this.repo.closeSession(sid!);
         const count = this.repo.getSampleCount(sid!);
 
         this.currentSessionId = null;
-        this.isRecording = false;
+        this.state = 'idle';
         this.emitStatus();
 
         return { sessionId: sid!, sampleCount: count };
     }
 
     getStatus() {
-        return { isRecording: this.isRecording, sessionId: this.currentSessionId ?? undefined };
+        return {
+            state: this.state,
+            isRecording: this.state === 'recording',
+            isPaused: this.state === 'paused',
+            sessionId: this.currentSessionId ?? undefined,
+        };
     }
 
     private emitStatus() {
@@ -96,6 +140,13 @@ export class Recorder {
             this.opts.onStatus?.(this.getStatus());
         } catch (err) {
             console.error('Error emitting recorder status', err);
+        }
+    }
+
+    private flushTimer(): void {
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.timer = null;
         }
     }
 }
