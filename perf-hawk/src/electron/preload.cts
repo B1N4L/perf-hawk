@@ -19,6 +19,8 @@ electron.contextBridge.exposeInMainWorld('electron', {
 
     sendFrameAction: (payload) => ipcSend('sendFrameAction', payload),
     startRecording: () => ipcInvoke('startRecording'),
+    pauseRecording: () => ipcInvoke('pauseRecording'),
+    resumeRecording: () => ipcInvoke('resumeRecording'),
     stopRecording: () => ipcInvoke('stopRecording'),
     subscribeRecordingStatus: (callback) => ipcOn('recordingStatus', (status) => { callback(status); }),
 

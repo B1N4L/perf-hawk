@@ -72,6 +72,16 @@ app.on("ready", () => {
         return recorder.stop();
     });
 
+    ipcMain.handle('pauseRecording', (event) => {
+        validateEventFrame(event.senderFrame);
+        return recorder.pause();
+    });
+
+    ipcMain.handle('resumeRecording', (event) => {
+        validateEventFrame(event.senderFrame);
+        return recorder.resume();
+    });
+
     ipcMainOn('sendFrameAction', (payload: FrameWindowAction) => {
         switch (payload) {
             case 'CLOSE':

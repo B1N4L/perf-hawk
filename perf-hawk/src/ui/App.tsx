@@ -18,8 +18,6 @@ function App() {
         })
     }, []);
 
-    // recording status subscription moved below state declaration
-
     const staticData = useStaticData();
     const statistics = useStatistics(10);
     // console.log(statistics);
@@ -48,21 +46,34 @@ function App() {
     }, [activeView, cpuUsages, ramUsages, storageUsages]);
 
     //record feature
-    const [isRecording, setIsRecording] = useState<boolean>(false);
+    const [recordingStatus, setRecordingStatus] = useState<RecordingStatus>({
+        state: 'idle',
+        isRecording: false,
+        isPaused: false,
+    });
     useEffect((): UnsubscribeFunction => {
         return window.electron.subscribeRecordingStatus((status) => {
-            setIsRecording(status.isRecording);
+            setRecordingStatus(status);
         });
     }, []);
-    //stores performance data for each 60 seconds before storing
-    //const [recordedData, setRecordedData] = useState<PerformanceData[]>([]);
+
     const handleRecord = (): void => {
-        if (!isRecording) {
+        if (recordingStatus.state === 'idle') {
             // request start; recorder will emit status event
             window.electron.startRecording().catch((err) => console.error('startRecording failed', err));
         } else {
             // request stop; recorder will emit status event
             window.electron.stopRecording().catch((err) => console.error('stopRecording failed', err));
+        }
+    }
+
+    const handlePause = (): void => {
+        if (recordingStatus.state === 'recording') {
+            window.electron.pauseRecording().catch((err) => console.error('pauseRecording failed', err));
+        } else if (recordingStatus.state === 'paused') {
+            window.electron.resumeRecording().catch((err) => console.error('resumeRecording failed', err));
+        } else {
+            console.log('pause/resume ignored because recorder is idle');
         }
     }
 
@@ -101,12 +112,20 @@ function App() {
                   />
               </div>
           </div>
-          {/* Record Button */}
+          {/* Record/Stop Button */}
           <button
               className="mt-12 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors"
               onClick={handleRecord}
           >
-              {isRecording ? '⏹ Stop Recording' : '⏺ Start Recording'}
+              {recordingStatus.state === 'idle' ? '⏺ Start Recording' : '⏹ Stop Recording'}
+          </button>
+          
+          {/* Resume/Pause Button */}
+          <button
+              className="mt-12 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              onClick={handlePause}
+          >
+              {recordingStatus.state === 'paused' ? 'Resume' : 'Pause'}
           </button>
       </div>
   )

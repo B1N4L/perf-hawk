@@ -10,9 +10,13 @@ type StaticData = {
     totalMemGB: number;
 };
 
+type RecordingLifecycleState = 'idle' | 'recording' | 'paused';
+
 type RecordingStatus = {
-    isRecording: boolean;
+    state: RecordingLifecycleState;
     sessionId?: number;
+    isRecording: boolean;
+    isPaused: boolean;
 };
 
 type RecordingResult = {
@@ -31,7 +35,9 @@ type EventPayloadMapping = {
     sendFrameAction: FrameWindowAction;
     // recording related
     startRecording: { sessionId: number };
-    stopRecording: { sessionId: number | null; sampleCount: number };
+    pauseRecording: { sessionId: number };
+    resumeRecording: { sessionId: number };
+    stopRecording: { sessionId: number; sampleCount: number };
     recordingStatus: RecordingStatus;
 };
 
@@ -49,7 +55,9 @@ interface Window {
         ) => UnsubscribeFunction;
         sendFrameAction: (payload: FrameWindowAction) => void;
         startRecording: () => Promise<{ sessionId: number }>;
-        stopRecording: () => Promise<{ sessionId: number | null; sampleCount: number }>;
+        pauseRecording: () => Promise<{ sessionId: number }>;
+        resumeRecording: () => Promise<{ sessionId: number }>;
+        stopRecording: () => Promise<RecordingResult>;
         subscribeRecordingStatus: (callback: (status: RecordingStatus) => void) => UnsubscribeFunction;
     }
 }
