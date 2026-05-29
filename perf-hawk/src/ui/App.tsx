@@ -9,6 +9,8 @@ import useStaticData from "./hooks/useStaticData";
 
 function App() {
 
+    const [activeView, setActiveView] = useState<View>("CPU")
+
     useEffect((): UnsubscribeFunction => {
         return window.electron.subscribeChangeView((view) => {
             console.log(view)
@@ -16,7 +18,7 @@ function App() {
         })
     }, []);
 
-    const [activeView, setActiveView] = useState<View>("CPU")
+    // recording status subscription moved below state declaration
 
     const staticData = useStaticData();
     const statistics = useStatistics(10);
@@ -44,6 +46,25 @@ function App() {
                 return storageUsages;
         }
     }, [activeView, cpuUsages, ramUsages, storageUsages]);
+
+    //record feature
+    const [isRecording, setIsRecording] = useState<boolean>(false);
+    useEffect((): UnsubscribeFunction => {
+        return window.electron.subscribeRecordingStatus((status) => {
+            setIsRecording(status.isRecording);
+        });
+    }, []);
+    //stores performance data for each 60 seconds before storing
+    //const [recordedData, setRecordedData] = useState<PerformanceData[]>([]);
+    const handleRecord = (): void => {
+        if (!isRecording) {
+            // request start; recorder will emit status event
+            window.electron.startRecording().catch((err) => console.error('startRecording failed', err));
+        } else {
+            // request stop; recorder will emit status event
+            window.electron.stopRecording().catch((err) => console.error('stopRecording failed', err));
+        }
+    }
 
   return (
       <div className="App">
@@ -80,6 +101,13 @@ function App() {
                   />
               </div>
           </div>
+          {/* Record Button */}
+          <button
+              className="mt-12 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              onClick={handleRecord}
+          >
+              {isRecording ? '⏹ Stop Recording' : '⏺ Start Recording'}
+          </button>
       </div>
   )
 }

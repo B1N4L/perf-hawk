@@ -1,11 +1,14 @@
-import {app, BrowserWindow} from "electron"
-import {ipcMainHandle, ipcMainOn, isDev} from "./util.js";
+import {app, BrowserWindow, ipcMain} from "electron"
+import {ipcMainHandle, ipcMainOn, isDev, ipcWebContentsSend, validateEventFrame} from "./util.js";
 import {getUIPath} from "./pathResolver.js";
 import {getStaticData, pollResources} from "./resourceManager.js";
 import {getPreloadPath} from "./pathResolver.js";
 import {createTray} from "./tray.js";
 import {createMenu} from "./menu.js";
-// import {initializeDatabase, shutdownDatabase} from "./db/index.js";
+import {initializeDatabase, shutdownDatabase} from "./db/index.js";
+import { getDatabase } from './db/client.js';
+import { RecordingRepository } from './db/repositories/recordingRepository.js';
+import { Recorder } from './db/recorder.js';
 //import {ipcMain, webContents} from 'electron';
 
 
@@ -13,14 +16,14 @@ import {createMenu} from "./menu.js";
 
 //create an Electron app that user can interact with. this file is added to package.json's main path. main.ts will run once the Electron starts
 app.on("ready", () => {
-    // try {
-    //     const { dbPath } = initializeDatabase();
-    //     console.log(`SQLite initialized at ${dbPath}`);
-    // } catch (error) {
-    //     console.error("Failed to initialize SQLite", error);
-    //     app.quit();
-    //     return;
-    // }
+    try {
+        const { dbPath } = initializeDatabase();
+        console.log(`SQLite initialized at ${dbPath}`);
+    } catch (error) {
+        console.error("Failed to initialize SQLite", error);
+        app.quit();
+        return;
+    }
 
     const mainWindow = new BrowserWindow({
         webPreferences: {
@@ -36,10 +39,37 @@ app.on("ready", () => {
         mainWindow.loadFile(getUIPath());
     }
 
-    pollResources(mainWindow);
+    // setup recorder & repository
+    const db = getDatabase();
+    const repo = new RecordingRepository(db);
+    const recorder = new Recorder(repo, {
+        checkpointIntervalMs: 60_000,
+        onStatus: (status) => ipcWebContentsSend('recordingStatus', mainWindow.webContents, status),
+    });
+
+    // start polling resources and forward samples to recorder
+    pollResources(mainWindow, (sample) => {
+        try { recorder.captureSample({ cpuUsage: sample.cpuUsage, ramUsage: sample.ramUsage, storageUsage: sample.storageUsage }); }
+        catch (err) { console.error('recorder.captureSample error', err); }
+    });
 
     ipcMainHandle("getStaticData", ()=>{
         return getStaticData();
+    });
+
+    ipcMain.handle('startRecording', (event) => {
+        validateEventFrame(event.senderFrame);
+        const staticData = getStaticData();
+        return recorder.start('manual', {
+            cpuModel: staticData.cpuModel,
+            totalMemGB: staticData.totalMemGB,
+            totalStorageGB: staticData.totalStorage,
+        });
+    });
+
+    ipcMain.handle('stopRecording', (event) => {
+        validateEventFrame(event.senderFrame);
+        return recorder.stop();
     });
 
     ipcMainOn('sendFrameAction', (payload: FrameWindowAction) => {
@@ -63,14 +93,14 @@ app.on("ready", () => {
     // handleGetStaticData(() => {
     //     return getStaticData();
     // });
-    handleCloseEvents(mainWindow);
+    handleCloseEvents(mainWindow, recorder);
 });
 
 // function handleGetStaticData(callback: () => StaticData) {
 //     // ipcMain.handle('getStaticData', callback); // this is not type safe
 //     ipcHandle('getStaticData', callback); // this is type safe
 // }
-function handleCloseEvents(mainWindow: BrowserWindow) {
+function handleCloseEvents(mainWindow: BrowserWindow, recorder?: Recorder) {
 
     let willClose = false;
     mainWindow.on("close", (e) => {
@@ -88,7 +118,8 @@ function handleCloseEvents(mainWindow: BrowserWindow) {
 
     app.on("before-quit", () => { // if close happens first and before quit happens after that, willClose= false
         willClose = true;
-        // shutdownDatabase();
+        try { recorder?.stop(); } catch (err) { console.error('Error stopping recorder on quit', err); }
+        shutdownDatabase();
     })
 
     mainWindow.on("show", () => {

@@ -18,6 +18,9 @@ electron.contextBridge.exposeInMainWorld('electron', {
     getStaticData: () => ipcInvoke("getStaticData"),
 
     sendFrameAction: (payload) => ipcSend('sendFrameAction', payload),
+    startRecording: () => ipcInvoke('startRecording'),
+    stopRecording: () => ipcInvoke('stopRecording'),
+    subscribeRecordingStatus: (callback) => ipcOn('recordingStatus', (status) => { callback(status); }),
 
 } satisfies Window["electron"]) //electron object from window // satisfies: tells typescript we expect this object of this type, if it doesn't exist, throw an error.
 

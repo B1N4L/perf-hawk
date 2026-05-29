@@ -42,7 +42,7 @@ export function ipcWebContentsSend<Key extends keyof EventPayloadMapping>(
 
 // path validations to prevent malicious events
 export function validateEventFrame(frame: WebFrameMain | null) {
-    console.log('validateEventFrame', frame?.url);
+    // console.log('validateEventFrame', frame?.url);
     if (!frame) {
         throw new Error('Malicious event: senderFrame is null');
     }

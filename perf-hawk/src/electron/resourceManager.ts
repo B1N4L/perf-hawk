@@ -7,7 +7,7 @@ import {ipcWebContentsSend} from "./util.js";     //requires node 18 or later
 const POLLING_INTERVAL = 500 //ms
 
 //in an interval, poll the resources and send them to the main process
-export function pollResources(mainWindow: BrowserWindow){
+export function pollResources(mainWindow: BrowserWindow, onSample?: (stats: Statistics) => void){
     setInterval( async () => {
         const cpuUsage = await getCpuUsage();
         const ramUsage = getRamUsage();
@@ -15,11 +15,17 @@ export function pollResources(mainWindow: BrowserWindow){
         // console.log({cpuUsage, ramUsage, storageUsage: storageData.usage});
         // everything that Electron needs to interact with the actual window is inside the webContents
         // mainWindow.webContents.send("statistics", { //is not type safe
-        ipcWebContentsSend("statistics", mainWindow.webContents, { // is type safe
+        const sample = {
             cpuUsage,
             ramUsage,
             storageUsage: storageData.usage
-        });
+        };
+
+        if (onSample) {
+            try { onSample(sample); } catch (err) { console.error('onSample callback error', err); }
+        }
+
+        ipcWebContentsSend("statistics", mainWindow.webContents, sample); // is type safe
 
     }, POLLING_INTERVAL);
 }
